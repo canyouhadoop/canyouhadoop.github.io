@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>静态页面</title>
-    <style>
-        /* 这里可以插入你的 CSS 样式 */
-    </style>
+    <title>静态页面 - 网站性能监测示例</title>
 </head>
 <body>
     <h1>欢迎来到静态页面</h1>
-   
-    <!-- 这里可以继续添加你的页面内容 -->
+
+    <script>
+        var startTime = performance.now();
+
+        window.addEventListener('load', function() {
+            var loadTime = performance.now() - startTime;
+            console.log('页面加载时间: ' + loadTime + 'ms');
+            // 这里可以将日志发送到后端进行处理，也可以使用第三方日志收集服务
+        });
+    </script>
 </body>
 </html>
