@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网站性能监测示例</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网站性能</title>
+<style>
+  .metric-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
 
-        h1 {
-            text-align: center;
-        }
-    </style>
+  .metric {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 30%;
+  }
+</style>
 </head>
 <body>
-    <h1>欢迎来到静态页面</h1>
+<h1>Monitoring Metrics</h1>
 
-    <script>
-        var startTime = performance.now();
+<div class="metric-container">
+  <div class="metric" id="response-time">Response Time: - ms</div>
+  <div class="metric" id="request-count">Request Count: -</div>
+  <div class="metric" id="error-rate">Error Rate: -%</div>
+</div>
 
-        window.addEventListener('load', function() {
-            var loadTime = performance.now() - startTime;
-            console.log('页面加载时间: ' + loadTime + 'ms');
-            // 这里可以将日志发送到后端进行处理，也可以使用第三方日志收集服务
-        });
-    </script>
+<script>
+  // Function to simulate response time, request count, and error rate
+  function simulateMetrics() {
+    // Simulate response time (random between 100ms and 1000ms)
+    var responseTime = Math.floor(Math.random() * 901) + 100;
+    document.getElementById('response-time').textContent = 'Response Time: ' + responseTime + ' ms';
+
+    // Simulate request count (random between 1 and 100)
+    var requestCount = Math.floor(Math.random() * 100) + 1;
+    document.getElementById('request-count').textContent = 'Request Count: ' + requestCount;
+
+    // Simulate error rate (random between 0% and 10%)
+    var errorRate = (Math.random() * 10).toFixed(2);
+    document.getElementById('error-rate').textContent = 'Error Rate: ' + errorRate + '%';
+  }
+
+  // Update metrics every 5 seconds
+  setInterval(simulateMetrics, 5000);
+
+  // Initial metrics update
+  simulateMetrics();
+</script>
+
 </body>
 </html>
